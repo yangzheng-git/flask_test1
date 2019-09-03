@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加日记</title>
+    <style>
+        body{
+            background-image:url("static/psb.jpg");
+            background-repeat:repeat-y;
+            background-position:right top;
+            background-size: cover;
+            margin-right:200px;
+            opacity:0.9;
+        }
+         .button1 {
+            background-color: #66CCCC; /* Green */
+            border: none;
+            color: white;
+            padding: 8px 160px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+         .button2{
+             background-color: rebeccapurple; /* Green */
+            border: none;
+            color: white;
+            padding: 8px 160px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+         }
+        .h_1{
+            font-family:'楷体';
+            font-size:40px;
+        }
+
+        .box{
+            border: 5px solid #CC9933;
+            padding: 40px;
+            font-family: '楷体';
+            margin-left: 10%;
+            margin-right: 10%;
+            {#text-align: center;#}
+
+        }
+        .box1{
+            margin-left: 20%;
+
+        }
+        .button_1 {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+
+
+<body>
+<div class="h_1">
+    <h1>我们的小屋</h1>
+</div>
+
+<a href="{{ url_for('main') }}"><button class="button1" name="b1">首页</button></a>
+<a href="{{ url_for('main_1') }}">    <button class="button1" name="b2"> 我们的日记</button></a>
+<a href="{{ url_for("main_2") }}">  <button class="button2" name="b3">添加日记</button></a>
+<div class="box">
+<form method="post">
+<div class="box1">
+    <lable>日期</lable>
+    <input type="text" name="date"><br>
+    <br>
+    <lable>作者</lable>
+    <input type="text" name="author"><br>
+    <br>
+    <lable>正文</lable>
+    <textarea name="zhengwen" cols="70" rows="5"> </textarea><br>
+    <button class="button_1" type="submit"> 提交</button>
+    {% for message in get_flashed_messages() %}
+            {{ message }}
+        {% endfor %}
+    </div>
+    
+</form>
+</div>
+
+
+
+</body>
+</html>

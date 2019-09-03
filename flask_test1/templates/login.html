@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请登录</title>
+
+
+    <style>
+        body{
+            background-image:url("static/psb.jpg");
+            background-repeat:repeat-y;
+            background-position:right top;
+            background-size: cover;
+            margin-right:200px;
+            opacity:0.9;
+        }
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .titil1 {
+            color: red;
+            text-align: center;
+            background-color: #66CCCC;
+            width:120%;
+        }
+        .login1{
+
+            position:absolute;
+            top:200px;
+            right: 400px;
+            border: 5px solid #CC9933;
+            padding: 40px;
+
+        }
+        #footer{
+
+            position:relative;
+            top:500px;
+
+            width: 120%;
+        }
+    </style>
+
+
+</head>
+
+
+
+
+<body>
+
+
+<h1 class='titil1' style=" font-family: '楷体';text-align:center">爱的小屋，先敲门哦</h1><br>
+
+
+<div class="login1">
+    <form method="post">
+        <lable>用户名</lable>
+        <input type="text" name="username"><br>
+        <lable>密    码  </lable>
+        <input type="password" name="password"><br>
+        <button class='button' >确认登录</button><br>
+
+        {% for message in get_flashed_messages() %}
+            {{ message }}
+        {% endfor %}
+    </form>
+</div>
+
+
+<div id="footer" style="background-color: #ee7700;clear:both;text-align: center;float:;">
+    <lable>版权归杨铮所有</lable>
+
+</div>
+
+
+
+</body>
+</html>

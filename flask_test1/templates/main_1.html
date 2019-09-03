@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我们的日记</title>
+    <style>
+        body{
+            background-image:url("static/psb.jpg");
+            background-repeat:repeat-y;
+            background-position:right top;
+            background-size: cover;
+            margin-right:200px;
+            opacity:0.9;
+        }
+         .button1 {
+            background-color: #66CCCC; /* Green */
+            border: none;
+            color: white;
+            padding: 8px 160px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+         .button2{
+             background-color: rebeccapurple; /* Green */
+            border: none;
+            color: white;
+            padding: 8px 160px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+         }
+        .h_1{
+            font-family:'楷体';
+            font-size:40px;
+        }
+        .riji{
+             {#background-color:  rebeccapurple; /* Green */#}
+            width: 70%;
+            text-align:center ;
+            font-size: 20px;
+            border:10px solid rebeccapurple;
+            margin-left: 120px;
+        }
+        .riji_1{
+            border:5px solid aquamarine;
+            {#width: 40%;#}
+            margin-left:20%;
+            margin-right: 20%;
+            margin-bottom: -3%;
+        }
+        .author_sty{
+            font-size: 14px;
+        }
+        .button_1 {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+
+
+<body>
+<div class="h_1">
+    <h1>我们的小屋</h1>
+</div>
+<div>
+<a href="{{ url_for('main') }}"><button class="button1" name="b1">首页</button></a>
+<a href="{{ url_for('main_1') }}">    <button class="button2" name="b2"> 我们的日记</button></a>
+<a href="{{ url_for("main_2") }}">  <button class="button1" name="b3">添加日记</button></a>
+</div>
+
+
+<div class="riji">
+{% for date in dates %}
+      <h4> <i>{{ date.date_name }}</i></h4> <a href="{{ url_for('delate_date',date_id=date.id) }}">删除</a><br>
+      {% for text in date.texts %}
+           {% if text %}
+           <p class="riji_1"> {{ text.text_main }}</p><br>{% endif %}
+        <pre class="author_sty">  <i>                                    by---{{ text.author }} <a href="{{ url_for('delate_text',text_id=text.id) }}">删除</a></i> </pre>
+
+
+       {% endfor %}
+{% endfor %}
+{% for message in get_flashed_messages() %}
+            {{ message }}
+        {% endfor %}
+</div>
+
+
+</body>
+</html>
